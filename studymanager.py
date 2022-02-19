@@ -23,25 +23,31 @@ class StudyManager:
         return answer == self.lines[self.line_index][self.answer_index]
 
     
-    # purpose: removes the lines at current index from lines
+    # purpose: removes the lines at current index from lines and correct_count
     def remove_current_index(self):
         del self.lines[self.line_index]
+        del self.correct_count[self.line_index]
 
 
     # purpose: increment the correct count of an index if answer is correct
     # remove question from lines if it has been answered correctly twice
-    def correct_answer(self):
+    def answer_correctly(self):
         if self.correct_count[self.line_index] == 2:
             self.remove_current_index()
-
-
+        else:
+            self.correct_count[self.line_index] += 1
+        
 
     # purpose: advance the line index and based on user answer. If index equals 9, we return to zero
     # update correct_count if answer is correct
     def advance_line(self, isCorrect):
-        self.line_index = self.line_index+1 if self.line_index < 9 else 0
         if isCorrect:
-            self.correct_answer()
+            self.answer_correctly()
+        end_index = min(9, len(self.lines) - 1)
+        self.line_index = self.line_index + 1 if i < end_index else 0
+
+        
+        
             
 
 
