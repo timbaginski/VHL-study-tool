@@ -10,7 +10,7 @@ from studymanager import StudyManager
 # returns: boolean representing whether the user decided to override
 def ask_for_override(manager):
     override = input(f"Incorrect. Answer was {manager.get_answer()}. Override? (y/n)\n")
-    return override[0] == 'y'
+    return len(override) > 0 and override[0] == 'y'
 
 
 # purpose: run the study session 
