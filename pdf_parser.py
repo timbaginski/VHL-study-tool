@@ -41,6 +41,3 @@ def parse_pdf(path):
 
     
    
-                               
-
-
