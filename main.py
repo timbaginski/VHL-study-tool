@@ -23,6 +23,7 @@ def launch_session(manager):
             print("Correct!" + '\n')
         else:
             is_correct = ask_for_override(manager)
+            print("")
         
         manager.advance_line(is_correct)
 
