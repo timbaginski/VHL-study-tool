@@ -38,6 +38,4 @@ def get_lines(pdf):
 def parse_pdf(path):
     pdf = pdfplumber.open(path)
     return get_lines(pdf)
-
-    
-   
+ 

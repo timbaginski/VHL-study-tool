@@ -44,9 +44,13 @@ class StudyManager:
         if isCorrect:
             self.answer_correctly()
         end_index = min(9, len(self.lines) - 1)
-        self.line_index = self.line_index + 1 if i < end_index else 0
+        self.line_index = self.line_index + 1 if self.line_index < end_index else 0
 
-        
+
+    # purpose: returns whether the study session is finished (len(lines) == 0)
+    # returns: boolean whether study session is finished
+    def is_finished(self):
+        return len(self.lines) == 0
         
             
 
