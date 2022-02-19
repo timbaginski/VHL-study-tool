@@ -2,7 +2,6 @@ import pdfplumber
 from itertools import filterfalse
 
 
-
 # purpose: clear any lines that contain erroneous information or don't contain two items
 # This filters out the heading attop each page as well as date/time info
 # returns: use with filterfalse: True when invalid, False when valid

@@ -33,6 +33,7 @@ class StudyManager:
     def remove_current_index(self):
         del self.lines[self.line_index]
         del self.correct_count[self.line_index]
+        self.line_index -= 1
 
 
     # purpose: increment the correct count of an index if answer is correct
