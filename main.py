@@ -20,14 +20,14 @@ def launch_session(manager):
         answer = input(manager.get_prompt())
         is_correct = manager.matches_prompt(answer)
         if is_correct:
-            print("Correct!" + '\n')
+            print("Correct!\n")
         else:
             is_correct = ask_for_override(manager)
             print("")
         
         manager.advance_line(is_correct)
 
-    print("Session finished \n")
+    print("Session finished\n")
 
 
 def main():
