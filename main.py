@@ -9,7 +9,7 @@ from studymanager import StudyManager
 # inputs: StudyManager
 # returns: boolean representing whether the user decided to override
 def ask_for_override(manager):
-    override = input(f"Incorrect. Answer was \"{manager.get_answer()}\". Override? (y/n)\n")
+    override = input(manager.get_override_message())
     return len(override) > 0 and override[0] == 'y'
 
 
@@ -17,7 +17,7 @@ def ask_for_override(manager):
 # inputs: study manager, which will run the session
 def launch_session(manager):
     while not manager.is_finished():
-        answer = input(manager.get_prompt() + '\n')
+        answer = input(manager.get_prompt())
         is_correct = manager.matches_prompt(answer)
         if is_correct:
             print("Correct!" + '\n')
@@ -38,7 +38,7 @@ def main():
     args = parser.parse_args()
     lines = pdf_parser.parse_pdf(args.path)
     random.shuffle(lines)
-    manager = StudyManager(lines[0: 3], args.answer_with_term)
+    manager = StudyManager(lines, args.answer_with_term)
 
     launch_session(manager)
 

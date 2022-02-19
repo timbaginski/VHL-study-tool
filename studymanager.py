@@ -14,7 +14,7 @@ class StudyManager:
     # purpose: generate prompt from question_index and answer_with_term
     # returns: str representing the question prompt
     def get_prompt(self):
-        return self.lines[self.line_index][self.prompt_index] 
+        return self.lines[self.line_index][self.prompt_index] + '\n'
 
     
     # purpose: obtain the answer for the current question
@@ -58,6 +58,12 @@ class StudyManager:
     # returns: boolean whether study session is finished
     def is_finished(self):
         return len(self.lines) == 0
+
+
+    # purpose: return a message for main to use when requesting override
+    # returns: string message
+    def get_override_message(self):
+        return f"Incorrect. Answer was: \"{self.get_answer()}\". Override? (y/n)\n"
 
         
             
