@@ -1,4 +1,5 @@
 import sys
+import random
 import argparse
 import pdf_parser
 from studymanager import StudyManager
@@ -8,7 +9,7 @@ from studymanager import StudyManager
 # inputs: StudyManager
 # returns: boolean representing whether the user decided to override
 def ask_for_override(manager):
-    override = input(f"Incorrect. Answer was {manager.get_answer()}. Override? (y/n)")
+    override = input(f"Incorrect. Answer was {manager.get_answer()}. Override? (y/n)\n")
     return override[0] == 'y'
 
 
@@ -16,16 +17,16 @@ def ask_for_override(manager):
 # inputs: study manager, which will run the session
 def launch_session(manager):
     while not manager.is_finished():
-        answer = input(manager.get_prompt())
+        answer = input(manager.get_prompt() + '\n')
         is_correct = manager.matches_prompt(answer)
         if is_correct:
-            print("Correct!")
+            print("Correct!" + '\n')
         else:
             is_correct = ask_for_override(manager)
         
         manager.advance_line(is_correct)
 
-    print("Session finished")
+    print("Session finished \n")
 
 
 def main():
@@ -36,6 +37,7 @@ def main():
 
     args = parser.parse_args()
     lines = pdf_parser.parse_pdf(args.path)
+    random.shuffle(lines)
     manager = StudyManager(lines, args.answer_with_term)
 
     launch_session(manager)

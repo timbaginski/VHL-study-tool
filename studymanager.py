@@ -14,7 +14,7 @@ class StudyManager:
     # purpose: generate prompt from question_index and answer_with_term
     # returns: str representing the question prompt
     def get_prompt(self):
-        return self.lines[self.line_index][self.prompt_index]
+        return self.lines[self.line_index][self.prompt_index] 
 
     
     # purpose: obtain the answer for the current question
