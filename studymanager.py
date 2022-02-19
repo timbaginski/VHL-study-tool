@@ -11,10 +11,16 @@ class StudyManager:
         self.correct_count = list(itertools.repeat(0, len(lines)))
 
 
-    # purpose: gemerate prompt from question_index and answer_with_term
+    # purpose: generate prompt from question_index and answer_with_term
     # returns: str representing the question prompt
     def get_prompt(self):
         return self.lines[self.line_index][self.prompt_index]
+
+    
+    # purpose: obtain the answer for the current question
+    # returns: str representing the answer
+    def get_answer(self):
+        return self.lines[self.line_index][self.answer_index]
 
 
     # purpose: determine whether a given answer matches the prompt
@@ -40,8 +46,8 @@ class StudyManager:
 
     # purpose: advance the line index and based on user answer. If index equals 9, we return to zero
     # update correct_count if answer is correct
-    def advance_line(self, isCorrect):
-        if isCorrect:
+    def advance_line(self, is_correct):
+        if is_correct:
             self.answer_correctly()
         end_index = min(9, len(self.lines) - 1)
         self.line_index = self.line_index + 1 if self.line_index < end_index else 0
@@ -51,6 +57,7 @@ class StudyManager:
     # returns: boolean whether study session is finished
     def is_finished(self):
         return len(self.lines) == 0
+
         
             
 
