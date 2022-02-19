@@ -54,10 +54,10 @@ class StudyManager:
         self.line_index = self.line_index + 1 if self.line_index < end_index else 0
 
 
-    # purpose: returns whether the study session is finished (len(lines) == 0)
-    # returns: boolean whether study session is finished
-    def is_finished(self):
-        return len(self.lines) == 0
+    # purpose: returns whether the study session is active (len(lines) != 0)
+    # returns: boolean whether study session is active
+    def is_active(self):
+        return len(self.lines) != 0
 
 
     # purpose: return a message for main to use when requesting override

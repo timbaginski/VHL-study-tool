@@ -16,7 +16,7 @@ def ask_for_override(manager):
 # purpose: run the study session 
 # inputs: study manager, which will run the session
 def launch_session(manager):
-    while not manager.is_finished():
+    while manager.is_active():
         answer = input(manager.get_prompt())
         is_correct = manager.matches_prompt(answer)
         if is_correct:
