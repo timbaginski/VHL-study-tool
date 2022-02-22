@@ -37,7 +37,12 @@ def main():
     parser.add_argument('path', help='path of study sheet PDF')
 
     args = parser.parse_args()
-    lines = pdf_parser.parse_pdf(args.path)
+    try:
+        lines = pdf_parser.parse_pdf(args.path)
+    except OSError as e:
+        print(e)
+        sys.exit()
+
     random.shuffle(lines)
     manager = StudyManager(lines, args.answer_with_term)
 
