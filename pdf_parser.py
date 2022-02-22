@@ -35,6 +35,11 @@ def get_lines(pdf):
 # purpose: given a file path, open a pdf and retrieve its lines (term/definition pairs)
 # returns: the lines of the given pdf
 def parse_pdf(path):
-    pdf = pdfplumber.open(path)
+    try:
+        pdf = pdfplumber.open(path)
+    except OSError as e:
+        print(e)
+        exit()
+
     return get_lines(pdf)
  
